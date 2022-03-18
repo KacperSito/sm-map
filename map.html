@@ -1,0 +1,81 @@
+ 
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   
+  
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+   crossorigin=""></script>
+   
+
+   
+
+  <!--
+  -->
+   
+ <!DOCTYPE html>
+
+ <html>
+   
+	<head>
+	<meta charset="UTF-8">
+	<style>
+	<!-- rozciaganie na ekranie -->
+	
+	body 
+	{margin: 0;}
+	
+	html, #map 
+	{
+    height: 500px;
+    width: 800px;
+	}
+	
+	</style>
+	<title>Travle offices map</title> 
+	
+  
+	</head>
+
+   
+ <body>
+ <div id="map"> 
+ 
+ <link rel="stylesheet" href="css/leaflet.css">
+   
+ <script> 
+   // ,{maxZoom:22} po 'map'
+   var mymap = L.map('map').setView([ 50.055882, 19.936824 ], 14);
+   
+   
+	//L.tileLayer("http://192.168.1.100:3000/epww_256/{z}/{x}/{y}.png").addTo(mymap) 
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?').addTo(mymap);
+	
+	//Locations
+		var locations_kas = [
+	
+	["LOT TRAVEL",50.053498665797036, 19.93963207290329, "Ul. Stradomska 7, 31-068 Kraków", "tel.   (+48 12)  422 89 89"],
+	["POS 2",52.20012409219932, 21.012038360784057],
+	["POS 3",52.2201989155457, 21.225731707260524] 
+	];
+	
+	
+	for (var i = 0; i<locations_kas.length; i++){
+	marker_kas = new L.marker([locations_kas[i][1], locations_kas[i][2]])
+	.bindPopup(locations_kas[i][0] +'<br>' + locations_kas[i][3] +'<br>'+ locations_kas[i][4])
+	.addTo(mymap);
+	}
+
+	L.control.scale().addTo(mymap);
+	
+	// data from file or db
+	//TODO
+	
+
+
+   
+</script> 
+</body> 
+</html>
+   
